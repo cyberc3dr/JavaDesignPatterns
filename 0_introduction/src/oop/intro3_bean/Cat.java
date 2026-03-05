@@ -1,5 +1,7 @@
 package oop.intro3_bean;
 
+import java.util.Objects;
+
 public class Cat {
 
     private int age;
@@ -24,5 +26,24 @@ public class Cat {
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Cat cat)) return false;
+        return age == cat.age && Objects.equals(name, cat.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(age, name);
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
